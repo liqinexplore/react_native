@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>这是我的基础知识</title>
+</head>
+<body>
+<div id="app1">
+    <script src="react.min.js"></script>
+    <script src="JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var MessageBox = React.createClass({
+
+            //创建组件
+            render:function(){
+//                添加交互onclick标签
+//                用数组渲染
+                var submessages=[];
+                for(var ii=0; ii<10; ii++){
+                    submessages.push(
+                          <Submessage/>
+                    )
+                }
+                return (<div>
+                        <h1>这是个createClass 的组件</h1>
+                            {submessages}
+                        </div>
+                )
+            }
+        });
+        //创建子组件
+        var Submessage=React.createClass({
+           render:function(){
+             return(
+                <div>
+                   <h2>你好我被Message调用的</h2>
+                   <Footer/>
+               </div>
+             )
+           }
+        });
+        //创建子组件
+        var Footer=React.createClass({
+           render:function(){
+              return(<h3>这个是最后的一个组件了</h3>)
+           }
+        });
+        //react渲染
+        React.render(<MessageBox/>,document.getElementById('app1'),function(){
+            console.log('你好createCalss组件rander渲染');
+        })
+
+    </script>
+</div>
+
+</body>
+</html>
